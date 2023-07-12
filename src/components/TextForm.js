@@ -1,8 +1,39 @@
 import React, {useState} from 'react'
 
 export default function TextForm(prop) {
+
+  const [myStyle, setStyle] = useState({
+    color : 'white',
+    backgroundColor: 'black'
+  })
+  const [btnText, setbtnText] = useState("Enable dark mode")
+ const toggleStyle= ()=>{
+
+    if(myStyle.color === 'white'){
+    setStyle({
+      color : 'black',
+      backgroundColor: 'white',
+    });
+    setbtnText("Enable dark mode");
+  }
+
+   else{
+    setStyle({
+      color : 'white',
+      backgroundColor: 'black',
+    })
+    setbtnText("Enable light mode")
+  }
+  }
+  
     const handleUpcase = ()=>{
         let newText = text.toUpperCase();
+        setText(newText)
+
+    }
+
+    const handleCopy = ()=>{
+        let text = document.getElementById("myBox")
         setText(newText)
 
     }
@@ -29,7 +60,7 @@ export default function TextForm(prop) {
 
   return (
    <>
-   <div className='container'>
+   <div className='container'style={myStyle}>
    <h1>{prop.handling}</h1>
    <div className="mb-3">
           <label htmlFor="myBox" className="form-label">Enter text</label>
@@ -45,7 +76,11 @@ export default function TextForm(prop) {
        
        
       </div>
+      <div className='container my-3'>
+      <button onClick={toggleStyle} type="button" class="btn btn-outline-dark">{btnText}</button>
+      </div>
     </>
   )
     
   }
+
