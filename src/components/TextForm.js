@@ -34,7 +34,8 @@ export default function TextForm(prop) {
 
     const handleCopy = ()=>{
         let text = document.getElementById("myBox")
-        setText(newText)
+       
+        navigator.clipboard.writeText(text.value);
 
     }
 
@@ -66,9 +67,10 @@ export default function TextForm(prop) {
           <label htmlFor="myBox" className="form-label">Enter text</label>
           <textarea className="form-control"  onChange={handleOnChange} value={text} id="myBox" rows="8"></textarea>
       </div>
-      <button className="btn btn-primary mx-1" onClick={handleUpcase}>convert to upper case</button>
-      <button className="btn btn-primary mx-1" onClick={handleLowercase}>convert to lower case</button>
-      <button type="submit" onClick={speak} className="btn btn-warning mx-2 my-2">Speak</button>
+      <button className="btn btn-outline-primary mx-1" onClick={handleUpcase}>convert to upper case</button>
+      <button className="btn btn-outline-primary mx-1" onClick={handleLowercase}>convert to lower case</button>
+      <button type="submit" onClick={speak} className="btn btn-outline-primary mx-1">Speak</button>
+      <button onClick={handleCopy} type="button" className="btn btn-outline-primary mx-1">copy</button>
       </div>
       <div className='container'>
         <h1>Your text summary</h1>
